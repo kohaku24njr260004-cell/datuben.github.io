@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#32945d">
+  <title>脱弁！自炊生活</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="脱弁 自炊生活トップ">
+      <span class="brand-mark">🥬</span>
+      <span>脱弁！<strong>自炊生活</strong></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#record">食事を記録</a>
+      <a href="#report">週間レポート</a>
+      <a href="#recipes">レシピ</a>
+      <a href="#points">ポイント</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">ちょっとずつ、自炊を楽しもう。</span>
+        <h1>コンビニ弁当から、<br><span>自分で作るごはん</span>へ。</h1>
+        <p>毎日の小さな一歩が、未来の自分をつくる。<br>記録して、ポイントを貯めて、気軽に自炊を始めよう！</p>
+        <a class="button button-primary" href="#record">今日の食事を記録する <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-label="野菜と自炊をイメージしたイラスト">
+        <div class="sun"></div>
+        <div class="hero-plate">🍚</div>
+        <div class="floating leaf-one">🥬</div>
+        <div class="floating leaf-two">🥕</div>
+        <div class="floating leaf-three">🍅</div>
+        <div class="hero-note">自炊できた！<br><strong>えらい！🎉</strong></div>
+      </div>
+    </section>
+
+    <section class="welcome-strip">
+      <div><span class="live-dot"></span><span id="todayLabel">今日の記録</span></div>
+      <p id="dailyMessage">今日も自分のペースでいこう！</p>
+    </section>
+
+    <section class="section" id="record">
+      <div class="section-heading">
+        <div><span class="section-kicker">01 / DAILY LOG</span><h2>今日の食事を記録しよう</h2></div>
+        <p>食べたものを選ぶだけでOK！</p>
+      </div>
+      <div class="record-layout">
+        <div class="record-card">
+          <div class="card-icon">🍱</div>
+          <h3>今日のごはんは？</h3>
+          <p class="muted">一番近いものを選んで記録してください。</p>
+          <div class="record-options">
+            <button class="record-option" data-meal="homemade">
+              <span class="option-emoji">🍳</span><span><strong>自炊した</strong><small>おうちで料理した！</small></span><b>＋10 pt</b>
+            </button>
+            <button class="record-option" data-meal="bento">
+              <span class="option-emoji">🏪</span><span><strong>コンビニ弁当</strong><small>今日は買ってきた！</small></span><b class="no-point">記録する</b>
+            </button>
+          </div>
+          <p class="record-feedback" id="recordFeedback" aria-live="polite">記録は何度でも追加できます。</p>
+        </div>
+        <div class="today-card">
+          <span class="mini-label">TODAY'S STATUS</span>
+          <h3>今日のがんばり</h3>
+          <div class="today-stats">
+            <div><span class="stat-emoji">🍳</span><strong id="todayHome">0</strong><small>自炊</small></div>
+            <div><span class="stat-emoji">🍱</span><strong id="todayBento">0</strong><small>コンビニ弁当</small></div>
+          </div>
+          <div class="encouragement" id="encouragement">まずは記録するところから始めよう！</div>
+          <p class="tiny-note">※食事の回数ではなく、記録した回数を表示しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section report-section" id="report">
+      <div class="section-heading">
+        <div><span class="section-kicker">02 / WEEKLY REPORT</span><h2>1週間のふりかえり</h2></div>
+        <span class="week-label" id="weekLabel">今週の記録</span>
+      </div>
+      <div class="report-card">
+        <div class="report-intro">
+          <div><span class="mini-label">YOUR WEEK</span><h3>先週より、ちょっと前進！</h3><p>できたことを見つけて、来週につなげよう。</p></div>
+          <div class="report-badge">📊 WEEKLY<br><strong>REPORT</strong></div>
+        </div>
+        <div class="report-stats">
+          <div><small>自炊した回数</small><strong id="weekHome">0<span>回</span></strong></div>
+          <div><small>コンビニ弁当を買った回数</small><strong id="weekBento">0<span>回</span></strong></div>
+          <div><small>獲得ポイント</small><strong id="weekPoints">0<span> pt</span></strong></div>
+        </div>
+        <div class="bar-area">
+          <div class="bar-label"><span>自炊の割合</span><strong id="homeRate">0%</strong></div>
+          <div class="bar-track"><div class="bar-fill" id="homeBar"></div></div>
+        </div>
+        <p class="report-message" id="weeklyMessage">まずは1週間、気軽に記録してみよう！</p>
+        <p class="tiny-note">毎週日曜日に、この1週間の記録を確認できます。いつでも最新の集計を表示しています。</p>
+      </div>
+    </section>
+
+    <section class="section recipes-section" id="recipes">
+      <div class="section-heading">
+        <div><span class="section-kicker">03 / EASY RECIPES</span><h2>何を作るか迷ったら？</h2></div>
+        <p>初心者でも挑戦しやすい簡単レシピ</p>
+      </div>
+      <div class="recipe-tools">
+        <label class="search-box">⌕ <input id="recipeSearch" type="search" placeholder="料理名・材料で検索"></label>
+        <div class="filter-buttons" id="recipeFilters">
+          <button class="filter-button active" data-filter="all">すべて</button>
+          <button class="filter-button" data-filter="quick">時短</button>
+          <button class="filter-button" data-filter="easy">初心者向け</button>
+          <button class="filter-button" data-filter="rice">ごはんもの</button>
+        </div>
+      </div>
+
+      <div class="ingredient-search">
+  <h3>🥕 冷蔵庫にある食材からレシピを探す</h3>
+  <p>使いたい食材を入力してね（例：卵、玉ねぎ、ツナ）</p>
+
+  <div class="ingredient-input-area">
+    <input
+      type="text"
+      id="ingredientInput"
+      placeholder="食材を「、」や「,」で区切って入力"
+    >
+    <button id="ingredientSearchButton" type="button">
+      レシピを探す
+    </button>
+  </div>
+
+  <p id="ingredientSearchMessage" aria-live="polite"></p>
+  <div id="ingredientResults" class="ingredient-results"></div>
+</div>
+
+      <div class="recipe-grid" id="recipeGrid"></div>
+      <p class="empty-state" id="recipeEmpty" hidden>レシピが見つかりませんでした。別の言葉で検索してみてね。</p>
+    </section>
+
+    <section class="section points-section" id="points">
+      <div class="section-heading">
+        <div><span class="section-kicker">04 / NAYNAY POINT</span><h2>自炊してポイントを貯めよう！</h2></div>
+        <p>自炊の記録でNayNayポイントGET</p>
+      </div>
+      <div class="points-layout">
+        <div class="points-card">
+          <div class="coin">N</div>
+          <span class="mini-label">YOUR NAYNAY POINT</span>
+          <p>現在のポイント</p>
+          <div class="point-total"><strong id="totalPoints">0</strong><span>pt</span></div>
+          <div class="point-rule">🍳 自炊1回の記録につき <strong>＋10 pt</strong></div>
+        </div>
+        <div class="rewards-card">
+          <h3>ポイント交換（デモ）</h3>
+          <p class="muted">ポイントを使って特典と交換できます。</p>
+          <div class="reward-row">
+            <span class="reward-emoji">🥕</span><div><strong>おすすめ食材リスト</strong><small>自炊に使いやすい食材をチェック</small></div><b>50 pt</b><button class="exchange-button" data-cost="50" data-reward="おすすめ食材リスト">交換</button>
+          </div>
+          <div class="reward-row">
+            <span class="reward-emoji">🍳</span><div><strong>かんたんレシピ特集</strong><small>人気の簡単レシピをまとめてチェック</small></div><b>100 pt</b><button class="exchange-button" data-cost="100" data-reward="かんたんレシピ特集">交換</button>
+          </div>
+          <p class="tiny-note">※交換特典はサイトの仕組みを体験するためのサンプルです。実際の商品配送や購入はありません。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-banner">
+      <span>🌱</span><div><h2>完璧じゃなくて大丈夫。</h2><p>昨日より一回、自炊が増えたらそれも立派な一歩！</p></div><a href="#record">記録を続ける ↑</a>
+    </section>
+  </main>
+
+  <footer><a class="footer-brand" href="#home">🥬 脱弁！自炊生活</a><p>毎日の小さな自炊を応援する、食事記録サイト。</p><small>© 2026 脱弁！自炊生活 / DEMO SITE</small></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="recipe-dialog" id="recipeDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="閉じる">×</button>
+    <div id="recipeDetail"></div>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
